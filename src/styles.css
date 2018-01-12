@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+ @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
+/* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";  */
+/* @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; */ 
+body{
+    margin: 0;
+}
+.heder-section{
+    text-align: center;
+    background: #3f51b5;
+     padding-top: 60px; 
+} 
+h1.mat-h1{
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 56px;
+    margin: 15px 5px;
+    color: hsla(0,0%,100%,.87);
+}
