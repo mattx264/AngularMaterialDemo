@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-
-  constructor() { }
+  options: FormGroup;
+  constructor(fb: FormBuilder) {
+    this.options = fb.group({
+      'fixed': false,
+      'top': 0,
+      'bottom': 0,
+    });
+  }
 
   ngOnInit() {
   }

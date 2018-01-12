@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   options: FormGroup;
-  constructor(fb: FormBuilder) { 
+  constructor(fb: FormBuilder) {
     this.options = fb.group({
       'fixed': false,
       'top': 0,

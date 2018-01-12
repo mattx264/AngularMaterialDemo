@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClassifiedModuleComponent } from './classified.component';
 import { CategoryComponent } from './category/category.component';
 import { DetailsComponent } from './details/details.component';
+import { AddComponent } from './add/add.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'kategoria', component: CategoryComponent },
       { path: 'szczegoly', component: DetailsComponent },
+      { path: 'dodaj', component: AddComponent },
       { path: '', redirectTo: 'kategoria', pathMatch: 'full' }
     ]
   }

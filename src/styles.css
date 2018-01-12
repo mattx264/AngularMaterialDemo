@@ -6,6 +6,16 @@
 body{
     margin: 0;
 }
+header{
+    background: #3f51b5;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 940px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 .heder-section{
     text-align: center;
     background: #3f51b5;
