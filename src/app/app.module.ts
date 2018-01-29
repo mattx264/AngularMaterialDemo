@@ -14,12 +14,14 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HomeComponent } from './home/home.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HeaderComponent,
     HomeComponent
+    
   ],
   imports: [
     AppRoutingModule,

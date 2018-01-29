@@ -8,7 +8,7 @@
         <ng-template matStepLabel>Ogloszenie</ng-template>
         <section>
           <div>
-            <mat-form-field>
+            <mat-form-field class="max-width">
               <mat-select placeholder="Kategoria" formControlName="category" name="category">
                 <mat-option *ngFor="let category of categoryList" [value]="category.id">
                   {{category.text}}
@@ -17,8 +17,13 @@
             </mat-form-field>
           </div>
           <div>
-            <mat-form-field>
+            <mat-form-field class="max-width">
               <input matInput placeholder="Tytul" formControlName="firstCtrl" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="max-width">
+              <textarea matInput placeholder="Tresc" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
             </mat-form-field>
           </div>
           <h3>Select files</h3>
@@ -38,40 +43,25 @@
                class="well my-drop-zone">
               Another drop zone
           </div> -->
-
+          <mat-form-field >
+            <app-input-file formControlName="requiredfile" placeholder="Required input" valuePlaceholder="No file selected" required></app-input-file>
+            <mat-icon matSuffix>folder</mat-icon>
+            <mat-error *ngIf="firstFormGroup.get('requiredfile').hasError('required')">
+              Please select a file
+            </mat-error>
+            <mat-error *ngIf="firstFormGroup.get('requiredfile').hasError('maxContentSize')">
+              The total size must not exceed {{firstFormGroup.get('requiredfile')?.getError('maxContentSize').maxSize | byteFormat}}
+              ({{firstFormGroup.get('requiredfile')?.getError('maxContentSize').actualSize | byteFormat}}).
+            </mat-error>
+          </mat-form-field>
           Multiple
+
+          <button type="button" md-button (click)="imgFileInput.click()">Add a photo</button>
+          <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
           <input type="file" ng2FileSelect [uploader]="uploader" multiple />
           <br/> Single
           <input type="file" ng2FileSelect [uploader]="uploader" />
-          <div>
-           <table>
-             <thead>
-               <tr>
-                 <th>
-                   Name
-                 </th>
-                 <th>
-                   Action
-                 </th>
-                 <th>File size</th>
-                 <th>
-                   Progress
-                 </th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr *ngFor="let item of uploader.queue">
-                 <td><strong>{{ item?.file?.name }}</strong></td>
-                 <td><button type="button" class="btn btn-success btn-xs"
-                  (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-              <span class="glyphicon glyphicon-upload"></span> Upload
-          </button></td>
-                 <td>{{item?.file?.size/1024/1024  | number:'.2' }} MB</td>
-                 <!-- <td>{{item.progress}} <mat-slider class="example-margin" [(ngModel)]="item.progress"></mat-slider></td> -->
-               </tr>
-             </tbody>
-            </table>
-          </div>
+        
         </section>
         <!-- <div class="col-md-9" style="margin-bottom: 40px">
  

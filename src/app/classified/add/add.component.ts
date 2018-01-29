@@ -1,6 +1,7 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
+
+import { FileValidators } from '../../shared/input-file/file-validators';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -15,7 +16,7 @@ export class AddComponent implements OnInit {
   secondFormGroup: FormGroup;
   categoryList = [{ text: 'A', id: 1 }, { text: 'B', id: 2 }];
   step1: any;
-  public uploader: FileUploader = new FileUploader({ url: 'http://localhost/RAMP/api/employee/file' });
+ 
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
   constructor(private formBuilder: FormBuilder) {
@@ -27,7 +28,10 @@ export class AddComponent implements OnInit {
     this.firstFormGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
       firstCtrl: ['', Validators.required],
-      category: [null, [Validators.required]]
+      category: [null, [Validators.required]],
+      requiredfile: [{ value: undefined, disabled: false }, [Validators.required, FileValidators.maxContentSize(104857600)]],
+      disabledfile: [{ value: undefined, disabled: true }],
+      multiplefile: [{ value: undefined, disabled: false }],
     });
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]

@@ -15,7 +15,7 @@
                 {
                     // string file1 = provider.BodyPartFileNames.First().Value;
                     // this is the file name on the server where the file was saved 
-                    return new HttpResponseMessage()
+                    return new HttpResponseMessage()git
                     {
                         Content = new StringContent("File uploaded.")
                     };
