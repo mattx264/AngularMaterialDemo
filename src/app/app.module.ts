@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
     LayoutComponent,
     HeaderComponent,
     HomeComponent
+   
     
   ],
   imports: [

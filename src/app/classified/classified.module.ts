@@ -13,6 +13,7 @@ import { ClassifiedItemComponent } from './classified-item/classified-item.compo
 import { AddComponent } from './add/add.component';
 import { InputFileComponent } from '../shared/input-file/input-file.component';
 import { ByteFormatPipe } from '../shared/input-file/byte-format.pipe';
+import { UploadFileComponent } from '../shared/upload-file/upload-file.component';
 
 @NgModule({
   imports: [
@@ -21,9 +22,9 @@ import { ByteFormatPipe } from '../shared/input-file/byte-format.pipe';
     ReactiveFormsModule,
     FormsModule,
     AngularModule
-
   ],
   declarations: [HomeComponent, CategoryComponent, DetailsComponent, ClassifiedModuleComponent, CategoryListComponent,
-    CategoryItemComponent, ClassifiedItemComponent, AddComponent, InputFileComponent, ByteFormatPipe]
+    CategoryItemComponent, ClassifiedItemComponent, AddComponent, InputFileComponent, ByteFormatPipe,
+    UploadFileComponent]
 })
 export class ClassifiedModule { }

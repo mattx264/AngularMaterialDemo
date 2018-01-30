@@ -70,10 +70,10 @@ export class InputFileComponent implements MatFormFieldControl<FileInput>, Contr
     return this._elementRef.nativeElement.disabled;
   }
   set disabled(dis: boolean) {
-    this.setDisabledState( coerceBooleanProperty(dis) )
+    this.setDisabledState(coerceBooleanProperty(dis));
     this.stateChanges.next();
   }
-  
+
   @Input() get errorState() {
     return this.ngControl.errors !== null && this.ngControl.touched;
   }
@@ -81,16 +81,28 @@ export class InputFileComponent implements MatFormFieldControl<FileInput>, Contr
   setDescribedByIds(ids: string[]) {
     this.describedBy = ids.join(' ');
   }
-
   onContainerClick(event: MouseEvent) {
-    if ((event.target as Element).tagName.toLowerCase() !== 'input' && !this.disabled) {
-      this._elementRef.nativeElement.querySelector('input').focus();
-      this.focused = true;
-      this.open();
+  }
+  // onContainerClick(event: MouseEvent) {
+  //   if ((event.target as Element).tagName.toLowerCase() !== 'input' && !this.disabled) {
+  //     this._elementRef.nativeElement.querySelector('input').focus();
+  //     this.focused = true;
+  //     this.open();
+  //   }
+  // }
+  onClick() {
+    this._elementRef.nativeElement.querySelector('input').focus();
+    this.focused = true;
+    this.open();
+  }
+  /**
+   * Upload all files if they're not uploaded already.
+   */
+  public UploadAllFiles() {
+    for (let i = 0; i < this.uploader.queue.length; i++) {
+      this.uploader.queue[i].upload();
     }
   }
-
-
   /**
    * @see https://angular.io/api/forms/ControlValueAccessor
    */
